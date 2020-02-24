@@ -11,20 +11,20 @@ def grabar_art_sin_vtas(ar_art_sin_vtas, cod_art_sin_vtas, descripcion):
 	ar_art_sin_vtas.write(cod_art_sin_vtas + ',' + descripcion + '\n')
 
 def grabar_art_erroneos(ar_art_erroneos, cod_art_erroneo, descripcion_error):
-	ar_art_erroneos.write(cod_art_erroneo + ',' + descripcion_error)
+	ar_art_erroneos.write(cod_art_erroneo + ',' + descripcion_error + '\n')
 
 def calcular_ventas_totales(ar_articulos, ar_vtas_s1, ar_vtas_total, ar_art_sin_vtas, ar_art_erroneos):
-	MAXIMO = '9999'
+	MAXIMO = 'ZZZZZZZ'
 	cod_art_mae, descripcion = leer_archivo(ar_articulos, MAXIMO + ',')
 	cod_art_s1, id_vta_s1, tot_vta_s1 = leer_archivo(ar_vtas_s1, MAXIMO + ',,')
-	contador = 0	
+#	contador = 0	
 	while(cod_art_mae != MAXIMO or cod_art_s1 != MAXIMO):
 		#  Este "if" auxiliar lo uso para evitar el bucle infinito
 		#  Se lo sacará una vez encontrado el problema que ocasiona..
 		#  el bucle infinito
-		if contador > 19:
-			return
-		contador += 1
+#		if contador > 19:
+#			return
+#		contador += 1
 		tot_vtas_art = 0
 #		min_cod_art = min(cod_art_mae, cod_art_s1)
 		min_cod_art = cod_art_s1  #  Es una asignación trivial. Solo cambiará cuando se encuentre el problema
@@ -38,9 +38,12 @@ def calcular_ventas_totales(ar_articulos, ar_vtas_s1, ar_vtas_total, ar_art_sin_
 			grabar_art_vtas_total(ar_vtas_total, cod_art_mae, str(tot_vtas_art))
 			cod_art_mae, descripcion = leer_archivo(ar_articulos, MAXIMO + ',')
 		else:
-			if cod_art_mae > cod_art_s1:
+			while cod_art_mae > cod_art_s1:
 				grabar_art_erroneos(ar_art_erroneos, cod_art_s1, "El codigo de Articulo no existe")
 				cod_art_s1, id_vta_s1, tot_vta_s1 = leer_archivo(ar_vtas_s1, MAXIMO + ',,')
+	#		if cod_art_mae > cod_art_s1:
+	#			grabar_art_erroneos(ar_art_erroneos, cod_art_s1, "El codigo de Articulo no existe")
+	#			cod_art_s1, id_vta_s1, tot_vta_s1 = leer_archivo(ar_vtas_s1, MAXIMO + ',,')
 
 def main():
 	print('Inicio Proceso')
