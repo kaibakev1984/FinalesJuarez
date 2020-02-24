@@ -28,7 +28,7 @@ def calcular_ventas_totales(ar_articulos, ar_vtas_s1, ar_vtas_total, ar_art_sin_
 		tot_vtas_art = 0
 #		min_cod_art = min(cod_art_mae, cod_art_s1)
 		min_cod_art = cod_art_s1  #  Es una asignación trivial. Solo cambiará cuando se encuentre el problema
-		if(cod_art_mae < min_cod_art):
+		if(cod_art_mae < min_cod_art and cod_art_mae != MAXIMO):
 			grabar_art_sin_vtas(ar_art_sin_vtas, cod_art_mae, descripcion)
 			cod_art_mae, descripcion = leer_archivo(ar_articulos, MAXIMO + ',')
 		elif cod_art_mae == min_cod_art:
