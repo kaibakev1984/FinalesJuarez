@@ -42,13 +42,13 @@ def calcular_ventas_totales(ar_articulos, ar_vtas_s1, ar_vtas_s2, ar_vtas_s3, ar
 			grabar_art_vtas_total(ar_vtas_total, cod_art_mae, str(acum_vtas_s1), str(acum_vtas_s2), str(acum_vtas_s3))
 			cod_art_mae, descripcion = leer_archivo(ar_articulos, MAXIMO + ',')
 		else:
-			while cod_art_mae > cod_art_s1:
+			if cod_art_mae > cod_art_s1:
 				grabar_art_erroneos(ar_art_erroneos, cod_art_s1, "El codigo de Articulo no existe")
 				cod_art_s1, id_vta_s1, tot_vta_s1 = leer_archivo(ar_vtas_s1, MAXIMO + ',,')
-			while cod_art_mae > cod_art_s2:
+			if cod_art_mae > cod_art_s2:
 				grabar_art_erroneos(ar_art_erroneos, cod_art_s2, "El codigo de Articulo no existe")
 				cod_art_s2, id_vta_s2, tot_vta_s2 = leer_archivo(ar_vtas_s2, MAXIMO + ',,')
-			while cod_art_mae > cod_art_s3:
+			if cod_art_mae > cod_art_s3:
 				grabar_art_erroneos(ar_art_erroneos, cod_art_s3, "El codigo de Articulo no existe")
 				cod_art_s3, id_vta_s3, tot_vta_s3 = leer_archivo(ar_vtas_s3, MAXIMO + ',,')
 
