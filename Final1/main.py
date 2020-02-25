@@ -53,7 +53,7 @@ def calcular_ventas_totales(ar_articulos, ar_vtas_s1, ar_vtas_s2, ar_vtas_s3, ar
 				cod_art_s3, id_vta_s3, tot_vta_s3 = leer_archivo(ar_vtas_s3, MAXIMO + ',,')
 
 def main():
-	print('Inicio Proceso')
+	print('Comienzo Proceso')
 	ar_articulos = open('articulos.csv', 'r')
 	ar_vtas_s1 = open('ventas_sucursal1.csv', 'r')
 	ar_vtas_s2 = open('ventas_sucursal2.csv', 'r')
